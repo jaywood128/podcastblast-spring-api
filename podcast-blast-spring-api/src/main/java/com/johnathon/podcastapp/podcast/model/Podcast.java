@@ -20,28 +20,25 @@ public class Podcast {
 
     private String image;
 
-    private String genreIds[];
+    private String[] genreIds[];
 
     private String thumbnail;
 
     private String titleOriginal;
 
-    private String listenNotesUrlString;
+    private String listenNotesUrl;
 
     private String titleHighlighted;
 
-    private Set<Episode> episodes;
-
 
     @ManyToOne(cascade=CascadeType.PERSIST)
-        private User usersSubscribedPodcasts;
+        private User user;
 
     @OneToMany
-        private Set<Episode> getEpisodes(){
-        return this.episodes;
-    }
+        private Set<Episode> episodes;
 
     @OneToMany
-        private User subscribedUsers;
-
+        private Set<User> subscribedUsers;
+    
+  
 }

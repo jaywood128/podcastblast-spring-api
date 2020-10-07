@@ -20,13 +20,13 @@ public class User {
 
 		@Id
 		private Long id;
-		private String email;
 		private String name;
+		private String email;
 
-		@OneToMany
-		private Set<Podcast> subscribedPodcasts;
-
-		@ManyToOne
-		private Set<Episode> downloadedEpisodes;
+//		@OneToMany
+//		private Set<Podcast> subscribedPodcasts;
+// 
+//		@OneToMany
+//		private Set<Episode> downloadedEpisodes;
 
 }

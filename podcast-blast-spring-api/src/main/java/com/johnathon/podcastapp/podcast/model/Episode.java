@@ -29,7 +29,7 @@ public class Episode {
 
     private String image;
 
-    private String itunesId;
+    private int itunesId;
 
     private String thumbnail;
 
@@ -37,7 +37,7 @@ public class Episode {
 
     private String listenNotesUrl;
 
-    private String auidoLengthSec;
+    private int auidoLengthSec;
 
     private String titleHighlighted;
 
@@ -49,5 +49,8 @@ public class Episode {
 
     @ManyToOne
     private Podcast podcast;
+    
+    @ManyToOne
+    private User user; 
 
 }
