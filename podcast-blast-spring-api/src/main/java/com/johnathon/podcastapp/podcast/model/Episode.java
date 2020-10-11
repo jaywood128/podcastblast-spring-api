@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Episode {
 
     @Id
-    private String id;
+    private long id;
 
     private String rss;
 

@@ -58,6 +58,8 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+
 	</dependencies>
 
 	<build>

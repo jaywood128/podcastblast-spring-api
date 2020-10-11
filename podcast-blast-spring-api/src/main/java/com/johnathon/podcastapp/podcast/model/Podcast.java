@@ -5,40 +5,75 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Data
-@Table(name="podcast")
+@Table(name = "podcast")
 
 public class Podcast {
 
-    @Id
-    private String id;
+	@Id
+	private long id;
 
-    private String image;
+	private String apiId;
 
-    private String[] genreIds[];
+	private String image;
 
-    private String thumbnail;
+	private ArrayList<Long> genreIds = new ArrayList<Long>();
 
-    private String titleOriginal;
+	private String thumbnail;
 
-    private String listenNotesUrl;
+	private String titleOriginal;
 
-    private String titleHighlighted;
+	private String listenNotesUrl;
+
+	private String titleHighlighted;
+
+	@ManyToMany(mappedBy="podcasts")
+	private Set<User> users = new HashSet<>();
+
+	@OneToMany
+	private Set<Episode> episodes = new HashSet<>();
+	
+	
+	
+	public Podcast(long id, String apiId, String image, ArrayList<Long> genreIds, String thumbnail,
+			String titleOriginal, String listenNotesUrl, String titleHighlighted) {
+		super();
+		this.id = id;
+		this.apiId = apiId;
+		this.image = image;
+		this.genreIds = genreIds;
+		this.thumbnail = thumbnail;
+		this.titleOriginal = titleOriginal;
+		this.listenNotesUrl = listenNotesUrl;
+		this.titleHighlighted = titleHighlighted;
+	}
+	public Set<User> getUsers(){
+		return this.users;
+	}
+	
+	public boolean setUser(User user){
+		if(user != null) {
+			return this.users.add(user);
+		}
+		return false;
+	}
+
+	public Set<Episode> getEpisodes() {
+		return episodes;
+	}
+
+	public void setEpisodes(Episode episode) {
+		if(episode != null) {
+			this.episodes.add(episode);
+		}
+	}
 
 
-    @ManyToOne(cascade=CascadeType.PERSIST)
-        private User user;
-
-    @OneToMany
-        private Set<Episode> episodes;
-
-    @OneToMany
-        private Set<User> subscribedUsers;
-    
-  
 }
