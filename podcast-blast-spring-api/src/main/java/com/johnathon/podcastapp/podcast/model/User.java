@@ -20,9 +20,10 @@ import java.util.Set;
 public class User {
 
 		@Id
-		private Long id;
+		private Integer id;
 		private String name;
 		private String email;
+		private String passwordDigest;
 
 		@ManyToMany
 		@JoinTable(
@@ -35,10 +36,11 @@ public class User {
 		@OneToMany
 		private Set<Episode> episodes = new HashSet<>();
 		
-		public User(Long id, String name, String email) {
+		public User(Long id, String name, String email, String passwordDigest) {
 			this.id = id;
 			this.name = name;
 			this.email = email;
+			this.passwordDigest = passwordDigest;
 			this.podcasts = new HashSet<>();
 		}
 		
@@ -61,7 +63,7 @@ public class User {
 		}
 
 		public void setPodcasts(Podcast podcast) {
-			if(podcast != null) {
+			if((podcast != null) && (!this.podcasts.contains(podcast))) {
 				this.podcasts.add(podcast);
 			}
 		}

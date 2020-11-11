@@ -24,7 +24,7 @@ public class Podcast {
 
 	private String image;
 
-	private ArrayList<Long> genreIds = new ArrayList<Long>();
+	private ArrayList<Integer> genreIds = new ArrayList<Integer>();
 
 	private String thumbnail;
 
@@ -42,13 +42,13 @@ public class Podcast {
 	
 	
 	
-	public Podcast(long id, String apiId, String image, ArrayList<Long> genreIds, String thumbnail,
+	public Podcast(long id, String apiId, String image, String thumbnail,
 			String titleOriginal, String listenNotesUrl, String titleHighlighted) {
 		super();
 		this.id = id;
 		this.apiId = apiId;
 		this.image = image;
-		this.genreIds = genreIds;
+//		this.genreIds = genreIds;
 		this.thumbnail = thumbnail;
 		this.titleOriginal = titleOriginal;
 		this.listenNotesUrl = listenNotesUrl;

@@ -15,6 +15,8 @@ public class UserInsertRepository {
 	
 	@Transactional
 	public void insertWithEntityManager(User user) {
+		System.out.println("Inside Entity Manager");
+		System.out.println(user.getName().toString());
 	    this.entityManager.persist(user);
 	}
 }
